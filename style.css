@@ -15,4 +15,6 @@ h1 {
 .map-container {
   width: 800px;
   height: 500px;
+  padding-left: 220px;
+  padding-top: 50px;
 }

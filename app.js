@@ -1,5 +1,18 @@
 Events = new Mongo.Collection('Events');
 
+function getLocation() {
+  // Get current latitude and longitudes
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+}
+
+function showPosition(position) {
+    // Global variables for use in Google Maps constructor
+    lat = position.coords.latitude;
+    longi = position.coords.longitude;
+}
+
 if (Meteor.isClient) {
 
   Meteor.startup(function() {
@@ -15,27 +28,37 @@ if (Meteor.isClient) {
       MapOptions: function() {
         if (GoogleMaps.loaded()) {
           return {
-            center: new google.maps.LatLng(37.41463623043073, -122.1848153442383),
-            zoom: 8
+            center: new google.maps.LatLng(lat, longi),
+            zoom: 9
           }
         }
       }
     }});
   });
 
-  Template.ongoingEvents.created = function() {
-  // We can use the `ready` callback to interact with the map API once the map is ready.
-  GoogleMaps.ready('events', function(map) {
-    // Add a marker to the map once it's ready
-    var marker = new google.maps.Marker({
-      position: map.options.center,
-      map: map.instance
+  Template.addForm.created = function() {
+    // We can use the `ready` callback to interact with the map API once the map is ready.
+    GoogleMaps.ready('events', function(map) {
+      // Add a marker to the map once it's ready
+      var marker = new google.maps.Marker({
+        position: map.options.center,
+        map: map.instance
+      });
     });
-  });
-};
+  };
 
   Router.route("/events/add", function(){
-    this.render("addEvents");
+    this.render("addEvents", {data: {
+      MapOptions: function() {
+        getLocation();
+        if (GoogleMaps.loaded()){
+          return {
+            center: new google.maps.LatLng(lat, longi),
+            zoom: 9
+          }
+        }
+      }
+    }});
   });
 
   Router.route("/leaderboards", function(){

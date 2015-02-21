@@ -2,7 +2,6 @@
 <h1>Host an event!</h1>
 {{> addForm}}
 </template>
-
 <template name="addForm">
 <form class="form-horizontal">
 	<fieldset>
@@ -22,6 +21,10 @@
 			<label for="inputTime" class="col-lg-2 control-label">Time:</label>
 			<div class="col-lg-10">
 				<input type="time" class="form-control" name="eventTime" id="inputTime" placeholder="HH:MM AM/PM">
+			</div>
+			<label for="inputDate" class="col-lg-2 control-label">Pin Location:</label>
+			<div class="map-container">
+				{{> googleMap name="events" options=MapOptions}}
 			</div>
 		</div>
 		<div class="form-group">
