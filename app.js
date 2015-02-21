@@ -9,8 +9,9 @@ function getLocation() {
 
 function showPosition(position) {
     // Global variables for use in Google Maps constructor
-    lat = position.coords.latitude;
-    longi = position.coords.longitude;
+    var lat = position.coords.latitude;
+    var longi = position.coords.longitude;
+    Session.set("currentPosition", {lat:lat, lng: longi});
 }
 
 if (Meteor.isClient) {
@@ -24,16 +25,7 @@ if (Meteor.isClient) {
   });
 
   Router.route("/events/now", function(){
-    this.render("ongoingEvents", {data: {
-      MapOptions: function() {
-        if (GoogleMaps.loaded()) {
-          return {
-            center: new google.maps.LatLng(lat, longi),
-            zoom: 9
-          }
-        }
-      }
-    }});
+    this.render("ongoingEvents");
   });
 
   Template.addForm.created = function() {
@@ -44,6 +36,17 @@ if (Meteor.isClient) {
         position: map.options.center,
         map: map.instance
       });
+
+      google.maps.event.addListener(map.instance, 'click', function(event){
+        Session.set("lat", event.latLng.lat());
+        Session.set("lng", event.latLng.lng());
+
+        var marker = new google.maps.Marker({
+          position: event.latLng,
+          map: map.instance
+        });
+      });
+
     });
   };
 
@@ -51,9 +54,10 @@ if (Meteor.isClient) {
     this.render("addEvents", {data: {
       MapOptions: function() {
         getLocation();
+        var pos = Session.get("currentPosition");
         if (GoogleMaps.loaded()){
           return {
-            center: new google.maps.LatLng(lat, longi),
+            center: new google.maps.LatLng(pos.lat, pos.lng),
             zoom: 9
           }
         }
@@ -80,7 +84,9 @@ if (Meteor.isClient) {
         dateCreated: new Date(),
         time: time,
         description: description,
-        requirements: requirements
+        requirements: requirements,
+        lat: Session.get("lat"),
+        lng: Session.get("lng")
       });
 
       e.target.eventName.value = "";
