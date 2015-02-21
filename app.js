@@ -9,9 +9,8 @@ function getLocation() {
 
 function showPosition(position) {
     // Global variables for use in Google Maps constructor
-    var lat = position.coords.latitude;
-    var longi = position.coords.longitude;
-    Session.set("currentPosition", {lat:lat, lng: longi});
+    gLati = position.coords.latitude;
+    gLongi = position.coords.longitude;
 }
 
 if (Meteor.isClient) {
@@ -31,12 +30,6 @@ if (Meteor.isClient) {
   Template.addForm.created = function() {
     // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('events', function(map) {
-      // Add a marker to the map once it's ready
-      var marker = new google.maps.Marker({
-        position: map.options.center,
-        map: map.instance
-      });
-
       google.maps.event.addListener(map.instance, 'click', function(event){
         Session.set("lat", event.latLng.lat());
         Session.set("lng", event.latLng.lng());
@@ -54,11 +47,10 @@ if (Meteor.isClient) {
     this.render("addEvents", {data: {
       MapOptions: function() {
         getLocation();
-        var pos = Session.get("currentPosition");
         if (GoogleMaps.loaded()){
           return {
-            center: new google.maps.LatLng(pos.lat, pos.lng),
-            zoom: 9
+            center: new google.maps.LatLng(gLati, gLongi),
+            zoom: 12
           }
         }
       }
@@ -80,6 +72,8 @@ if (Meteor.isClient) {
 
       Events.insert({
         name: name,
+        owner: Meteor.userId(),
+        username: Meteor.user().username,
         date: date,
         dateCreated: new Date(),
         time: time,
@@ -95,6 +89,10 @@ if (Meteor.isClient) {
       e.target.description.value = "";
       e.target.requirements.value = "";
     }
+  });
+
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
   });
 }
 

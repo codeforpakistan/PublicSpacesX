@@ -13,13 +13,14 @@
 	<div class="navbar-collapse collapse navbar-inverse-collapse">
 		<ul class="nav navbar-nav">
 			<li><a href="/events/now">Upcoming Events</a></li>
-			<li><a href="/events/add">Propose An Event</a></li>
+			{{#if currentUser}}
+				<li><a href="/events/add">Propose An Event</a></li>
+			{{/if}}
 			<li><a href="/leaderboards">Leaderboards</a></li>
 		</ul>
-	<ul class="nav navbar-nav navbar-right">
-		<li id="login">{{> loginButtons}}</li>
-	</ul>
-
+		<ul class="nav navbar-nav navbar-right">
+			{{> loginButtons}}
+		</ul>
 	</div>
 </div>
 </template>
