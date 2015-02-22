@@ -18,3 +18,9 @@ h1 {
   padding-left: 220px;
   padding-top: 50px;
 }
+
+#upcoming-maps {
+	padding-top: 0px;
+	width: 1000px;
+	height: 500px;
+}

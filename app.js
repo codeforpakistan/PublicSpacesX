@@ -24,7 +24,17 @@ if (Meteor.isClient) {
   });
 
   Router.route("/events/now", function(){
-    this.render("ongoingEvents");
+    this.render("ongoingEvents", {data: {
+      MapOptions: function() {
+        getLocation();
+        if (GoogleMaps.loaded()){
+          return {
+            center: new google.maps.LatLng(gLati, gLongi),
+            zoom: 12
+          }
+        }
+      }
+    }});
   });
 
   Router.route("/events/old", function(){
@@ -39,6 +49,11 @@ if (Meteor.isClient) {
     this.render("contact");
   });
 
+  Template.ongoingEvents.created = function(){
+    GoogleMaps.ready('ongoing-events', function(map) {
+    });
+  }
+
   Template.addForm.created = function(){
     // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('events', function(map) {
@@ -48,10 +63,10 @@ if (Meteor.isClient) {
 
         var marker = new google.maps.Marker({
           position: event.latLng,
+          animation: google.maps.Animation.DROP,
           map: map.instance
         });
       });
-
     });
   };
 
@@ -103,6 +118,7 @@ if (Meteor.isClient) {
     }
   });
 
+  //Use username instead of email for signup
   Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
   });
