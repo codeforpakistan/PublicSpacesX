@@ -15,7 +15,7 @@ function showPosition(position) {
 
 if (Meteor.isClient) {
 
-  Meteor.startup(function() {
+  Meteor.startup(function(){
     GoogleMaps.load();
   });
 
@@ -27,7 +27,19 @@ if (Meteor.isClient) {
     this.render("ongoingEvents");
   });
 
-  Template.addForm.created = function() {
+  Router.route("/events/old", function(){
+    this.render("oldEvents");
+  });
+
+  Router.route("/about", function(){
+    this.render("about");
+  });
+
+  Router.route("/contact", function(){
+    this.render("contact");
+  });
+
+  Template.addForm.created = function(){
     // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('events', function(map) {
       google.maps.event.addListener(map.instance, 'click', function(event){

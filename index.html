@@ -1,5 +1,5 @@
 <head>
-	<title>Galli Muhala</title>
+	<title>Galli Muhala - Utilizing Public Spaces</title>
 </head>
 <body>
 	{{>navBar}}
@@ -16,13 +16,15 @@
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Events<span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="/events/now">Upcoming Events</a></li>
-					<li><a href="/events/add">Propose An Event</a></li>
+					{{#if currentUser}}
+						<li><a href="/events/add">Propose An Event</a></li>
+					{{/if}}
 					<li><a href="/events/old">Previous Events</a></li>
 				</ul>
 			</li>
 			<li><a href="/leaderboards">Leaderboards</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Contact Us</a></li>
+			<li><a href="/contact">Contact Us</a></li>
+			<li><a href="/about">About</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			{{> loginButtons}}
