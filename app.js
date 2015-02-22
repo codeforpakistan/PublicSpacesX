@@ -51,6 +51,14 @@ if (Meteor.isClient) {
 
   Template.ongoingEvents.created = function(){
     GoogleMaps.ready('ongoing-events', function(map) {
+
+      for (var i = 0; i < Events.find().count(); i++) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(lat, lng),
+          animation: google.maps.Animation.DROP,
+          map: map.instance,
+        });
+      };
     });
   }
 
@@ -125,5 +133,4 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-
 }
