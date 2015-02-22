@@ -51,12 +51,22 @@ if (Meteor.isClient) {
 
   Template.ongoingEvents.created = function(){
     GoogleMaps.ready('ongoing-events', function(map) {
+      var infowindow = new google.maps.InfoWindow();
+
       Events.find().forEach(function (doc) {
+        var name = "<h1>"+doc.name+"</h1>";
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(doc.lat, doc.lng),
-          animation: google.maps.Animation.DROP,
+          animation: google.maps.Animation.BOUNCE,
           map: map.instance,
+          title: name
         });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(this.title);
+            infowindow.open(map.instance, this);
+        });
+
       });
     });
   }
