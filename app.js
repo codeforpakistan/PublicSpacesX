@@ -45,10 +45,6 @@ if (Meteor.isClient) {
     this.render("about");
   });
 
-  Router.route("/contact", function(){
-    this.render("contact");
-  });
-
   Template.ongoingEvents.created = function(){
     GoogleMaps.ready('ongoing-events', function(map) {
       var infowindow = new google.maps.InfoWindow();
