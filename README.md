@@ -1,4 +1,4 @@
-# galli-muhala
+# گلی محلہ
 
 Public domain is the essence of a neighborhood and determines the level of interaction and vitality of the community. Public spaces can be interpreted as neutral spaces devoid of any caste, creed and religion, thereby have the potential to incorporate equal citizen participation. We propose to reclaim and activate these spaces. By activating and re-purposing this public realm we can mitigate the social conformities. We think the urban environment is a significant strata of a city. Organization and appropriation of varied elements within it can lead to profound connectivity within neighborhoods to perpetuate a sense of ownership and belonging. 
 
