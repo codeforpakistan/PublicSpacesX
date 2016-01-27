@@ -25,10 +25,6 @@ h1 {
 	height: 500px;
 }
 
-img {
-	padding-left: 50px;
-}
-
 #spacing {
 	padding-top: 80px;
 }
@@ -38,9 +34,6 @@ img {
 	padding-right: 200px;
 }
 
-#headerImage {
-	padding-bottom: 10px;
-}
 
 ul.rig {
 	list-style: none;
