@@ -25,3 +25,7 @@ random
 ejson
 spacebars
 check
+accounts-facebook
+accounts-twitter
+accounts-google
+okgrow:analytics
