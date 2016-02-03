@@ -15,6 +15,8 @@ function showPosition(position) {
 
 if (Meteor.isClient) {
 
+  accountsUIBootstrap3.setLanguage('pt-BR');
+
   Meteor.startup(function(){
     GoogleMaps.load();
   });
