@@ -1,9 +1,17 @@
 Events = new Mongo.Collection('Events');
 
+var gLati = -25.441105;
+var gLongi =-49.276855;
+var gZoom = 12;
+
+var donelocation = false;
 function getLocation() {
   // Get current latitude and longitudes
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
+  if (!donelocation) {
+	  if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(showPosition,noLocation);
+	  }
+	  donelocation = true;
   }
 }
 
@@ -11,6 +19,20 @@ function showPosition(position) {
     // Global variables for use in Google Maps constructor
     gLati = position.coords.latitude;
     gLongi = position.coords.longitude;
+    gZoom = 15;
+    
+    $.each(GoogleMaps.maps,function(map){
+	    $.each(GoogleMaps.maps,function(map){
+	    	map = GoogleMaps.get(map);
+	    	map.instance.setCenter(new google.maps.LatLng(gLati, gLongi));
+	    	map.instance.setZoom(gZoom);
+	    });
+    	
+    });
+}
+
+function noLocation() {
+    console.log('no location');
 }
 
 if (Meteor.isClient) {
@@ -32,7 +54,7 @@ if (Meteor.isClient) {
         if (GoogleMaps.loaded()){
           return {
             center: new google.maps.LatLng(gLati, gLongi),
-            zoom: 12
+            zoom: gZoom
           }
         }
       }
@@ -41,6 +63,20 @@ if (Meteor.isClient) {
 
   Router.route("/events/old", function(){
     this.render("oldEvents");
+  });
+
+  Router.route("/places", function(){
+    this.render("places", {data: {
+      MapOptions: function() {
+        getLocation();
+        if (GoogleMaps.loaded()){
+          return {
+            center: new google.maps.LatLng(gLati, gLongi),
+            zoom: gZoom
+          }
+        }
+      }
+    }});
   });
 
   Router.route("/about", function(){
@@ -74,6 +110,36 @@ if (Meteor.isClient) {
         });
 
       });
+    });
+  }
+
+  Template.places.created = function(){
+    GoogleMaps.ready('places', function(map) {
+      var infowindow = new google.maps.InfoWindow();
+/*
+      Events.find().forEach(function (doc) {
+        var name = "<h4>"+ doc.name + "</h4>";
+        var date = "<p><b>Date:</b> " + doc.date + "</p>";
+        var time = "<p><b>Time:</b> " + doc.time + "</p>";
+        var host = "<p><b>Host:</b> " + doc.username + "</p>";
+        var des = "<p>" + doc.description + "</p>";
+        var details = "<p>" + doc.requirements + "</p>";
+
+        var content = name + date + time + host + des + details;
+
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(doc.lat, doc.lng),
+          animation: google.maps.Animation.BOUNCE,
+          map: map.instance,
+          title: content
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(this.title);
+            infowindow.open(map.instance, this);
+        });
+
+      });*/
     });
   }
 
@@ -150,4 +216,27 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+
+	Meteor.methods({
+	
+	    reload_places: function() {
+	    	
+//			Papa.parse(process.env.ROOT_URL + "data/Unidades_Atendimento_Ativas_Curitiba_-_Base_de_Dados.csv", {
+myobject = HTTP.get(Meteor.absoluteUrl("data/Unidades_Atendimento_Ativas_Curitiba_-_Base_de_Dados.csv"));
+console.log(myobject);
+console.log(Meteor.absoluteUrl("data/Unidades_Atendimento_Ativas_Curitiba_-_Base_de_Dados.csv"));
+/*
+			Papa.parse(myobject, {
+//				download: true,
+				complete: function(results) {
+					console.log("Finished:", results);
+				}
+			});
+	*/		
+			return true;
+			
+		}
+	
+	});
+
 }
