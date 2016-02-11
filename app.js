@@ -222,17 +222,27 @@ if (Meteor.isServer) {
 	    reload_places: function() {
 	    	
 //			Papa.parse(process.env.ROOT_URL + "data/Unidades_Atendimento_Ativas_Curitiba_-_Base_de_Dados.csv", {
-myobject = HTTP.get(Meteor.absoluteUrl("data/Unidades_Atendimento_Ativas_Curitiba_-_Base_de_Dados.csv"));
+/*myobject = HTTP.get(Meteor.absoluteUrl("data/Unidades_Atendimento_Ativas_Curitiba_-_Base_de_Dados.csv"));
 console.log(myobject);
 console.log(Meteor.absoluteUrl("data/Unidades_Atendimento_Ativas_Curitiba_-_Base_de_Dados.csv"));
-/*
-			Papa.parse(myobject, {
-//				download: true,
-				complete: function(results) {
+*/
+console.log(Meteor.absoluteUrl("data/unidades.csv"));
+			Papa.parse("http://wannago/unidades.csv", {
+				download: true,
+				header: true,
+				skipEmptyLines: true,
+				dynamicTyping: true,
+				preview: 5,
+				worker: true,
+				step: function(results, parser) {
+					console.log("Row data:", results.data);
+					console.log("Row errors:", results.errors);
+				},
+  				complete: function(results) {
 					console.log("Finished:", results);
 				}
 			});
-	*/		
+			
 			return true;
 			
 		}
