@@ -1,4 +1,8 @@
+var subscribe = null;
+
 Template.events.created = function() {
+  subscribe = Meteor.subscribe("events");
+
   GoogleMaps.ready('ongoing-events', function(map) {
     var infowindow = new google.maps.InfoWindow();
 
@@ -11,6 +15,14 @@ Template.events.created = function() {
       var details = "<p>" + doc.requirements + "</p>";
 
       var content = name + date + time + host + des + details;
+
+      // Exibe quantos usuários vão
+      if (doc.commingUsers) {
+        content += '<p><b>Quantos vão até agora?</b> ' + doc.commingUsers.length + '</p>';
+      }
+
+      // Eu vou
+      content += '<button class="btn btn-block btn-default btn-eu-vou" data-id="' + doc._id + '">Eu vou!</button>';
 
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(doc.lat, doc.lng),
@@ -26,3 +38,22 @@ Template.events.created = function() {
     });
   });
 }
+
+
+Template.events.events({
+  "click .btn-eu-vou": function(event, template){
+    var _id = template.$(event.target).attr('data-id');
+
+    var userId = Meteor.userId();
+    if (userId) {
+      Events.update(
+        { _id : _id },
+        { $addToSet : { commingUsers : userId } }
+      , function(err, result){
+        console.log(err, result);
+
+      });
+    }
+
+  }
+});

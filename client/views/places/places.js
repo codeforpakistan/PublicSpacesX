@@ -1,4 +1,8 @@
+var subscribe = null;
+
 Template.places.created = function() {
+  subscribe = Meteor.subscribe("places");
+
   GoogleMaps.ready('places', function(map) {
     var infowindow = new google.maps.InfoWindow();
 

@@ -3,7 +3,10 @@ Router.route("/", function() {
 });
 
 Router.route("/events/now", function() {
-  this.render("ongoingEvents", {
+  this.render("events", {
+    waitOn : function(){
+      Meteor.subscribe("events");
+    },
     data: {
       MapOptions: function() {
         Location.getLocation(); // Look at /client/lib/Location.js
@@ -18,12 +21,33 @@ Router.route("/events/now", function() {
   });
 });
 
+Router.route("/events/add", function(){
+  this.render("addEvents", {data: {
+    waitOn : function(){
+      Meteor.subscribe("categorias");
+      Meteor.subscribe("events");
+    },
+    MapOptions: function() {
+      Location.getLocation();
+      if (GoogleMaps.loaded()){
+        return {
+          center: new google.maps.LatLng(gLati, gLongi),
+          zoom: 12
+        }
+      }
+    }
+  }});
+});
+
 Router.route("/events/old", function() {
   this.render("oldEvents");
 });
 
 Router.route("/places", function() {
   this.render("places", {
+    waitOn : function(){
+      Meteor.subscribe("places");
+    },
     data: {
       MapOptions: function() {
         Location.getLocation();
@@ -40,20 +64,6 @@ Router.route("/places", function() {
 
 Router.route("/about", function() {
   this.render("about");
-});
-
-Router.route("/events/add", function(){
-  this.render("addEvents", {data: {
-    MapOptions: function() {
-      Location.getLocation();
-      if (GoogleMaps.loaded()){
-        return {
-          center: new google.maps.LatLng(gLati, gLongi),
-          zoom: 12
-        }
-      }
-    }
-  }});
 });
 
 Router.route("/leaderboards", function(){

@@ -1,4 +1,10 @@
+var subscribe = null;
+Meteor.subscribe("categorias");
+
 Template.addForm.created = function() {
+
+  subscribe = Meteor.subscribe("places", { NM_ABREV_EQUI : { $exists : true, $ne : '' } });
+
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('events', function(map) {
     google.maps.event.addListener(map.instance, 'click', function(event) {
@@ -24,7 +30,7 @@ Template.addForm.helpers({
     })
   },
   places : function(){
-    return Places.find({ NM_ABREV_EQUI : { $exists : true, $ne : '' } }).map(function(place){
+    return Places.find().map(function(place){
       return {
         label : place.NM_ABREV_EQUI,
         value : place._id
