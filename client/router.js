@@ -6,7 +6,7 @@ Router.route("/events/now", function() {
   this.render("ongoingEvents", {
     data: {
       MapOptions: function() {
-        Location.getLocation();
+        Location.getLocation(); // Look at /client/lib/Location.js
         if (GoogleMaps.loaded()) {
           return {
             center: new google.maps.LatLng(gLati, gLongi),
