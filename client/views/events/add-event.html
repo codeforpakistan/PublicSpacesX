@@ -1,5 +1,7 @@
 <template name="addEvents">
-  <h1>Organize um encontro!</h1> {{> addForm}}
+  <h1>Organize um encontro!</h1>
+
+  {{> addForm}}
 </template>
 
 <template name="addForm">
@@ -11,12 +13,36 @@
           <input type="text" class="form-control" name="eventName" id="inputName" placeholder="Event Name">
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="selectCategory" class="col-lg-2 control-label">Categoria:</label>
+        <div class="col-lg-10">
+          <select class="form-control" name="eventCategory" id="selectCategory">
+          {{#each categorias}}
+            <option value="{{ value }}">{{ label }}</option>
+          {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="selectPlace" class="col-lg-2 control-label">Espaço Público:</label>
+        <div class="col-lg-10">
+          <select class="form-control" name="eventPlace" id="selectPlace">
+          {{#each places}}
+            <option value="{{ value }}">{{ label }}</option>
+          {{/each}}
+          </select>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="inputDate" class="col-lg-2 control-label">Data:</label>
         <div class="col-lg-10">
           <input type="text" class="form-control" name="eventDate" id="inputDate" placeholder="DD/MM/YYY">
         </div>
       </div>
+
       <div class="form-group">
         <label for="inputTime" class="col-lg-2 control-label">Horário:</label>
         <div class="col-lg-10">
@@ -27,6 +53,7 @@
           {{> googleMap name="events" options=MapOptions}}
         </div>
       </div>
+
       <div class="form-group">
         <label for="textDescription" class="col-lg-2 control-label">Descrição:</label>
         <div class="col-lg-10">
@@ -39,6 +66,7 @@
           <span class="help-block">Liste as coisas que os participantes deverão trazer!</span>
         </div>
       </div>
+
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">
           <button type="submit" class="btn btn-primary">Criar</button>

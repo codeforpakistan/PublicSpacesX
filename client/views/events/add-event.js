@@ -14,19 +14,44 @@ Template.addForm.created = function() {
   });
 };
 
+Template.addForm.helpers({
+  categorias: function(){
+    return Categorias.find({ name : { $exists : true } }).map(function(cat){
+      return {
+        label : cat.name,
+        value : cat._id,
+      }
+    })
+  },
+  places : function(){
+    return Places.find({}).map(function(place){
+      return {
+        label : place.NM_EQUI,
+        value : place._id
+      };
+    });
+
+  }
+});
+
 Template.addForm.events({
   'submit form': function(e) {
     e.preventDefault();
-    name = e.target.eventName.value;
-    date = e.target.eventDate.value;
-    time = e.target.eventTime.value;
-    description = e.target.description.value;
-    requirements = e.target.requirements.value;
+
+    var name = e.target.eventName.value;
+    var category = e.target.eventCategory.value;
+    var place = e.target.eventPlace.value;
+    var date = e.target.eventDate.value;
+    var time = e.target.eventTime.value;
+    var description = e.target.description.value;
+    var requirements = e.target.requirements.value;
 
     Events.insert({
       name: name,
       owner: Meteor.userId(),
       username: Meteor.user().username,
+      category : category,
+      place : place,
       date: date,
       dateCreated: new Date(),
       time: time,
@@ -37,6 +62,8 @@ Template.addForm.events({
     });
 
     e.target.eventName.value = "";
+    e.target.eventCategory.value = "";
+    e.target.eventPlace.value = "";
     e.target.eventDate.value = "";
     e.target.eventTime.value = "";
     e.target.description.value = "";

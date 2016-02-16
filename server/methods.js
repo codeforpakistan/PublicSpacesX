@@ -25,12 +25,13 @@ Meteor.methods({
 
         if (results.data[0]) {
 
-          data = results.data[0];
+          var data = results.data[0];
+
           data.imported_at = Date.now();
 
           if (data.DS_DEP_ADMINISTRATIVA != 'Particular') {
 
-            console.log("Loading: ".data.NM_ABREV_EQUI);
+            console.log("Loading: ", data.NM_ABREV_EQUI);
 
             Places.upsert({
               // Selector
