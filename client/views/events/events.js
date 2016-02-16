@@ -1,4 +1,4 @@
-Template.ongoingEvents.created = function() {
+Template.events.created = function() {
   GoogleMaps.ready('ongoing-events', function(map) {
     var infowindow = new google.maps.InfoWindow();
 

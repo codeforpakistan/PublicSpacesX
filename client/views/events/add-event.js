@@ -24,9 +24,9 @@ Template.addForm.helpers({
     })
   },
   places : function(){
-    return Places.find({}).map(function(place){
+    return Places.find({ NM_ABREV_EQUI : { $exists : true, $ne : '' } }).map(function(place){
       return {
-        label : place.NM_EQUI,
+        label : place.NM_ABREV_EQUI,
         value : place._id
       };
     });
