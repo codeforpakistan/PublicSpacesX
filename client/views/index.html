@@ -1,0 +1,39 @@
+<head>
+  <title>Criativiades - Atividades nos espaços públicos</title>
+</head>
+
+<body>
+  {{>navBar}}
+</body>
+
+<template name="navBar">
+
+  <div class="navbar navbar-inverse">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse"></button>
+      <a class="navbar-brand" href="/">Criatividades</a>
+    </div>
+
+    <div class="navbar-collapse collapse navbar-inverse-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/places">Espaços públicos</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encontros<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/events/now">Proximos encontros</a></li>
+            {{#if currentUser}}
+            <li><a href="/events/add">Criar um encontro</a></li>
+            {{/if}}
+            <li><a href="/events/old">Encontros anteriores</a></li>
+          </ul>
+        </li>
+        <!--li><a href="/leaderboards">Leaderboards</a></li-->
+        <li><a href="/about">Quem somos</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{> loginButtons}}
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+</template>
