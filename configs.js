@@ -50,6 +50,14 @@ gPlaceTypesByCategory = {
 
 gPlaceTypes = _.flatten(gPlaceTypesByCategory);
 
+gCategoryByPlaceTypes = {};
+for (k in gPlaceTypesByCategory) {
+	gPlaceTypesByCategory[k].forEach(function(e) {
+		console.log(k);
+		gCategoryByPlaceTypes[e] = k;
+	});
+}
+
 gFilterAllPlaces = { 
 	"DS_SUBTIPO_EQUIPAMENTO" : { $in: gPlaceTypes }, 
 	"DS_DEP_ADMINISTRATIVA" : { $ne: "Particular" } 
