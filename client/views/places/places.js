@@ -6,7 +6,7 @@ Template.places.created = function() {
   GoogleMaps.ready('places', function(map) {
     var infowindow = new google.maps.InfoWindow();
 
-    Places.find().forEach(function(doc) {
+    Places.find(gFilterAllPlaces).forEach(function(doc) {
       var content =
         "<h4>" + doc.NM_ABREV_EQUI + "</h4>" +
         "<p><strong>" + doc.DS_TEMA + "</strong><p>" +

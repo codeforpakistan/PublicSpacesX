@@ -29,19 +29,16 @@ Meteor.methods({
 
           data.imported_at = Date.now();
 
-          if (data.DS_DEP_ADMINISTRATIVA != 'Particular') {
+          console.log("Loading: ", data.NM_ABREV_EQUI);
 
-            console.log("Loading: ", data.NM_ABREV_EQUI);
-
-            Places.upsert({
-              // Selector
-              source: "CD_EQUI",
-              currency: data.CD_EQUI
-            }, {
-              // Modifier
-              $set: data
-            });
-          }
+          Places.upsert({
+            // Selector
+            source: "CD_EQUI",
+            currency: data.CD_EQUI
+          }, {
+            // Modifier
+            $set: data
+          });
         }
       },
       complete: function(results) {
@@ -49,7 +46,7 @@ Meteor.methods({
           console.log("Parsing errors:", results.errors);
         }
 
-        console.log(">---------- Finished reloading places");
+        console.log(">---------- Finished reloading places.  Imported: " + Places.find({}).fetch().length);
       }
     });
     return true;
