@@ -7,6 +7,34 @@ Template.addForm.created = function() {
 
   // We can use the `ready` callback to interact with the map API once the map is ready.
   GoogleMaps.ready('events', function(map) {
+	  var infowindow = new google.maps.InfoWindow();
+
+	    Places.find().forEach(function(doc) {
+	      var content =
+	        "<h4>" + doc.NM_ABREV_EQUI + "</h4>" +
+	        "<p><strong>" + doc.DS_TEMA + "</strong><p>" +
+	        "<p><em>" + doc.DS_SUBTIPO_EQUIPAMENTO + "</em><p>";
+
+	      if (doc.TELEFONE_EQUI) {
+	        content = content + "<p><b>Fone:</b> " + doc.TELEFONE_EQUI + "</p>"
+	      }
+
+	      lat = parseInt(doc.LAT_SIRGAS.replace(/\s/g, '').substr(0, 9), 10) / 1000000;
+	      lon = parseInt(doc.LON_SIRGAS.replace(/\s/g, '').substr(0, 9), 10) / 1000000;
+
+	      var marker = new google.maps.Marker({
+	        position: new google.maps.LatLng(lat, lon),
+	        map: map.instance,
+	        title: content
+	      });
+
+	      google.maps.event.addListener(marker, 'click', function() {
+	        infowindow.setContent(this.title);
+	        infowindow.open(map.instance, this);
+	      });
+
+	    });
+	  
     google.maps.event.addListener(map.instance, 'click', function(event) {
       Session.set("lat", event.latLng.lat());
       Session.set("lng", event.latLng.lng());
@@ -17,6 +45,7 @@ Template.addForm.created = function() {
         map: map.instance
       });
     });
+
   });
 };
 
@@ -74,5 +103,14 @@ Template.addForm.events({
     e.target.eventTime.value = "";
     e.target.description.value = "";
     e.target.requirements.value = "";
-  }
+  },
+  
+	'change .form-control': function(e) {
+		console.log("form changed");
+		if ($(e.target).prop('id') == "selectPlace") { //Place selector changed, center pin in the map 
+			
+		}
+		var newValue = $(e.target).val();
+		var id = $(e.target).prop('id');
+	}
 });
