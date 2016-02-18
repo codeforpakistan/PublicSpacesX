@@ -30,12 +30,12 @@ Template.addForm.helpers({
     })
   },
   places : function(){
-    return Places.find().map(function(place){
+    return Places.find(gFilterAllPlaces).map(function(place){
       return {
-        label : place.NM_ABREV_EQUI,
+        label : place.DS_SUBTIPO_EQUIPAMENTO + ": " + place.NM_ABREV_EQUI,
         value : place._id
       };
-    });
+    }).sort(function(a,b) { a.label.localeCompare(b.label); });
 
   }
 });
