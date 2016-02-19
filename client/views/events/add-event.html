@@ -50,7 +50,10 @@
             <div class="col-lg-10">
               <input type="text" class="form-control" name="eventTime" id="inputTime" placeholder="HH:MM AM/PM">
             </div>
-            <label for="inputDate" class="col-lg-2 control-label">Marca o lugar:</label>
+          </div>
+          
+          <div class="form-group">
+            <label for="add-event-map" class="col-lg-2 control-label">Marque o lugar:</label>
             <div class="map-container" id="add-event-map">
               {{> googleMap name="events" options=MapOptions}}
             </div>
@@ -60,7 +63,7 @@
             <label for="textDescription" class="col-lg-2 control-label">Descrição:</label>
             <div class="col-lg-10">
               <textarea class="form-control" rows="3" name="description" id="textDescription"></textarea>
-              <span class="help-block">Descreve o encontro que você gostaria de organizar!</span>
+              <span class="help-block">Descreva o encontro que você gostaria de organizar!</span>
             </div>
             <label for="textNeeded" class="col-lg-2 control-label">O que levar:</label>
             <div class="col-lg-10">
