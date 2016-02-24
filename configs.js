@@ -62,3 +62,13 @@ gFilterAllPlaces = {
 	"DS_SUBTIPO_EQUIPAMENTO" : { $in: gPlaceTypes }, 
 	"DS_DEP_ADMINISTRATIVA" : { $ne: "Particular" } 
 }
+
+gEventTypes = {
+'Encontro desportivo',
+'Encontro cultural',
+'Encontro manutenção',
+'Encontro jardinagem',
+'Encontro pets',
+'Outro encontro',
+};
+
