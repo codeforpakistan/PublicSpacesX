@@ -1,5 +1,21 @@
 /* CSS declarations go here */
 
+@font-face { 
+	font-family: proximanova; 
+	src: url("/fonts/proximanova-semibold-webfont.woff"); 
+} 
+.navbar-toggle {
+	padding: 24px 25px;
+	background-image: url("/images/toggle.png");
+	background-repeat: no-repeat;
+    background-position: center; 
+}
+.navbar-inverse .navbar-nav li a {
+	font-size: 4.0vh;
+	font-weight: 600;
+	color: #2C2C2C;
+}
+
 .form-control {
   width: 800px;
 }
