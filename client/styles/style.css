@@ -1,5 +1,9 @@
 /* CSS declarations go here */
 
+:root{
+    --menu-font-color: #2C2C2C;
+}
+
 @font-face { 
 	font-family: proximanova; 
 	src: url("/fonts/proximanova-semibold-webfont.woff"); 
@@ -11,8 +15,12 @@
     background-position: center; 
 }
 .navbar-inverse .navbar-nav li a {
-	font-size: 4.0vh;
+	font-size: 12px;
+	font-size: 4.0vmin;
 	font-weight: 600;
+	color: #2C2C2C;
+}
+.navbar-inverse .navbar-nav .open a, a:focus {
 	color: #2C2C2C;
 }
 
