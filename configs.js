@@ -76,14 +76,14 @@ gPlaceIcons = {
 	"Praças": 'praca.png',
 };
 
-gEventTypes = {
+gEventTypes = [
 	'Encontro desportivo',
 	'Encontro cultural',
 	'Encontro manutenção',
 	'Encontro jardinagem',
 	'Encontro pets',
 	'Outro encontro',
-};
+];
 
 gEventIcons = {
 	'Encontro desportivo': 'enc_sport.png',
