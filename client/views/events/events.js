@@ -1,4 +1,6 @@
 var subscribe = null;
+var markers = null;
+var globalMap = null;
 
 Template.events.created = function() {
   subscribe = Meteor.subscribe("events");
@@ -6,6 +8,7 @@ Template.events.created = function() {
   GoogleMaps.ready('ongoing-events', function(map) {
     var infowindow = new google.maps.InfoWindow();
 
+    markers = {};
     Events.find().forEach(function(doc) {
       var name = "<h4>" + doc.name + "</h4>";
       var date = "<p><b>Date:</b> " + doc.date + "</p>";
@@ -29,6 +32,8 @@ Template.events.created = function() {
         map: map.instance,
         title: content
       });
+      
+      markers[doc._id] = marker;
 
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(this.title);
@@ -36,6 +41,13 @@ Template.events.created = function() {
       });
 
     });
+   
+    if (Router.current().params.query.event_id && markers) {
+    	marker = markers[Router.current().params.query.event_id];
+    	map.instance.setCenter(marker.getPosition());
+    	google.maps.event.trigger(marker, 'click');
+    }
+    	
   });
 }
 
