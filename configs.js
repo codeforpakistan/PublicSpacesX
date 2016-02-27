@@ -61,4 +61,36 @@ for (k in gPlaceTypesByCategory) {
 gFilterAllPlaces = { 
 	"DS_SUBTIPO_EQUIPAMENTO" : { $in: gPlaceTypes }, 
 	"DS_DEP_ADMINISTRATIVA" : { $ne: "Particular" } 
-}
+};
+
+gPlaceIcons = {
+	"Academia ao Ar Livre": 'arlivre.png',
+	"Casa da Leitura": 'casaleitura.png',
+	"Feiras e Mercados": 'feira.png',
+	"Parques e Praças": 'parque.png',
+	"Bibliotecas e Casas de leitura": 'biblioteca.png',
+	"Centro de Cultura": 'centrocul.png',
+	"Esporte": 'esporte.png',
+	"Museus": 'museu.png',
+	"Plantação Rural":	'outros.png',
+	"Praças": 'praca.png',
+};
+
+gEventTypes = [
+	'Encontro desportivo',
+	'Encontro cultural',
+	'Encontro manutenção',
+	'Encontro jardinagem',
+	'Encontro pets',
+	'Outro encontro',
+];
+
+gEventIcons = {
+	'Encontro desportivo': 'enc_sport.png',
+	'Encontro cultural': "enc_cultu.png",
+	'Encontro de manutenção': 'enc_manut.png',
+	'Encontro de jardinagem': 'enc_jardin.png',
+	'Encontro para pets': 'enc_pets.png',
+	'Outro encontro': 'enc_outros.png',
+};
+
