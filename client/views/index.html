@@ -8,13 +8,15 @@
 
 <template name="navBar">
 
-  <div class="navbar navbar-inverse navbar-new">
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-new">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse"></button>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
       <a class="navbar-brand" href="/"><img src="/images/logohorizontal.png"/></a>
     </div>
 
-    <div class="navbar-collapse collapse navbar-inverse-collapse">
+    <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="/places">Espaços públicos</a></li>
         <li class="dropdown">
@@ -34,4 +36,5 @@
     </div>
     <!-- /.navbar-collapse -->
   </div>
+  </nav>
 </template>
