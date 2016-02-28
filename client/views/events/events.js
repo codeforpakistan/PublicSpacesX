@@ -11,13 +11,14 @@ Template.events.created = function() {
     markers = {};
     Events.find().forEach(function(doc) {
       var name = "<h4>" + doc.name + "</h4>";
-      var date = "<p><b>Date:</b> " + doc.date + "</p>";
-      var time = "<p><b>Time:</b> " + doc.time + "</p>";
-      var host = "<p><b>Host:</b> " + doc.username + "</p>";
+      var category = "<h5>" + doc.category + "</h5>";
+      var date = "<p><b>Data:</b> " + doc.date + "</p>";
+      var time = "<p><b>Hora:</b> " + doc.time + "</p>";
+      var host = "<p><b>Organizador:</b> " + doc.username + "</p>";
       var des = "<p>" + doc.description + "</p>";
       var details = "<p>" + doc.requirements + "</p>";
 
-      var content = name + date + time + host + des + details;
+      var content = name + category + date + time + host + des + details;
 
       // Exibe quantos usuários vão
       if (doc.commingUsers) {
