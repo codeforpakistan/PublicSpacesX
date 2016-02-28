@@ -79,13 +79,16 @@ Template.addForm.created = function() {
 
 Template.addForm.helpers({
 	categorias: function(){
-		return Categorias.find({ name : { $exists : true } }).map(function(cat){
-			return {
-				label : cat.name,
-				value : cat._id,
-			}
-		})
-	},
+		var ret = [];
+		for (cat of gEventTypes) {
+			ret.push({
+				label : cat,
+				value : cat
+			});
+		}
+		return ret;
+	}
+	,
 	places : function(){
 		return Places.find(gFilterAllPlaces).map(function(place){
 			return {
