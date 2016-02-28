@@ -16,14 +16,18 @@
 .navbar li { color: #000 } 
 .navbar-toggle {
 	padding: 24px 25px;
-	background-image: url("/images/toggle.png");
+	background-image: url("/img/toggle.png");
 	background-repeat: no-repeat;
     background-position: center; 
 }
 .navbar-default {
-	background-color: rgb(255,255,255,0.15);
+	background-color: rgba(100,100,100,0.5);
 }
-.navbar-default .navbar-nav li a {
+
+.navbar-default .navbar-nav li a:hover {
+	color: #2C2C2C;
+}
+.navbar-default .navbar-nav li a, a:focus, a:hover {
 	font-family: proximanova;
 	font-size: 20px;
 	font-weight: 600;
@@ -31,6 +35,9 @@
 }
 .navbar-default .navbar-nav .open a, a:focus {
 	color: #2C2C2C;
+}
+.navbar-brand {
+	padding: 5% 5%;
 }
 
 .form-control {

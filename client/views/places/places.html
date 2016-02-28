@@ -1,20 +1,22 @@
 <template name="places">
-  <h1>Todos os lugares públicos perto de você!</h1>
-
-  <div id="place-filters">
-
-
-	<form>
-		<ul>
-	    {{#each placeTypes}}
-		  <li style="float: left; padding: 5px; list-style-type: none;"><input type="checkbox" name="place-type" value="{{this}}" />{{this}}</li>
-	    {{/each}}
-		</ul>
-	</form>
-
-  </div>
- 
-  <div class="map-container" id="upcoming-maps">
-    {{> googleMap name="places" options=MapOptions}}
-  </div>
+  <div style="padding-top: 75px;">
+	  <h1>Todos os lugares públicos perto de você!</h1>
+	
+	  <div id="place-filters">
+	
+	
+		<form>
+			<ul>
+		    {{#each placeTypes}}
+			  <li style="float: left; padding: 5px; list-style-type: none;"><input type="checkbox" name="place-type" value="{{this}}" />{{this}}</li>
+		    {{/each}}
+			</ul>
+		</form>
+	
+	  </div>
+	 
+	  <div class="map-container" id="upcoming-maps">
+	    {{> googleMap name="places" options=MapOptions}}
+	  </div>
+ </div>
 </template>
