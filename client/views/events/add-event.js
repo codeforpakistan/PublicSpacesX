@@ -80,7 +80,7 @@ Template.addForm.created = function() {
 Template.addForm.helpers({
 	categorias: function(){
 		var ret = [];
-		for (cat of gEventTypes) {
+		for (cat in gEventTypes) {
 			ret.push({
 				label : cat,
 				value : cat
