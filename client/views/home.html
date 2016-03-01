@@ -7,9 +7,26 @@
         padding-top: 90px;
     }
     
+    #section-como-funciona {
+        background-color: #3EBCE0;
+    }
+    
+    #section-quem-somos-nos {
+        background-color: #efb821;
+    }
+
     @media (min-width: 768px) {
         .home-section {
             background-size: 100%;
+        }
+        .home-section-float {
+            margin-top: -60px;
+            margin-bottom: -80px;
+        }
+        .home-section-float img {
+            margin-bottom: -20px;
+            margin-top: -20px;
+            margin-left: 20px;
         }
     }
     
@@ -29,12 +46,6 @@
         padding: 0;
         text-align: left;
     }
-    
-    #section-como-funciona {
-        background-color: #3EBCE0;
-        margin-top: -60px;
-        margin-bottom: -80px;
-    }
     </style>
     <div class="home-section text-center" style="background-image: url('/img/home_1.jpg')">
         <div class="row">
@@ -50,17 +61,15 @@
             </div>
         </div>
     </div>
-    <div>
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-2 col-md-5 col-md-offset-3" id="section-como-funciona">
-                <div class="row">
-                    <div class="col-xs-7">
-                        <h3>Como funciona o projeto?</h3>
-                        <p style="color: #fff">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-                    </div>
-                    <div class="col-xs-5">
-                        <img class="img-responsive" src="/img/interrogacao.png">
-                    </div>
+    <div class="row">
+        <div class="home-section-float col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" id="section-como-funciona">
+            <div class="row">
+                <div class="col-xs-7">
+                    <p>Como funciona o projeto?</p>
+                    <p style="color: #fff">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco l</p>
+                </div>
+                <div class="col-xs-5">
+                    <img class="img-responsive" src="/img/interrogacao.png">
                 </div>
             </div>
         </div>
@@ -79,6 +88,27 @@
                 <div class="col-md-4">
                     <h3 class="logo-font" style="color: black">CRIAR EVENTO</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="home-section-float col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"  id="section-quem-somos-nos">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Quem somos nós</h3>
+                </div>
+                <div class="col-md-4">
+                    <h3>Thierry</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Guga</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Leonardo</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                 </div>
             </div>
         </div>
