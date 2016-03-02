@@ -38,12 +38,23 @@ Template.addForm.created = function() {
 			lat = parseInt(place.LAT_SIRGAS.replace(/\s/g, '').substr(0, 9), 10) / 1000000;
 			lon = parseInt(place.LON_SIRGAS.replace(/\s/g, '').substr(0, 9), 10) / 1000000;
 
+			image = 'place_default.png';
+			if (gPlaceIcons[place.DS_SUBTIPO_EQUIPAMENTO]) {
+				image = gPlaceIcons[place.DS_SUBTIPO_EQUIPAMENTO];
+			} else {
+				if (gPlaceIcons[gCategoryByPlaceTypes[place.DS_SUBTIPO_EQUIPAMENTO]]) {
+					image = gPlaceIcons[gCategoryByPlaceTypes[place.DS_SUBTIPO_EQUIPAMENTO]];
+				}
+			}
+
+			image = new google.maps.MarkerImage('/icons/' + image, null, null, null, new google.maps.Size(64 * 0.4, 64 * 0.4));
+
 			var marker = new google.maps.Marker({
 				position: new google.maps.LatLng(lat, lon),
-				draggable: true,
 				map: map.instance,
-				icon: MARKER_DEFAULT,
-				title: content
+				title: content,
+				icon: image,
+				draggable: true
 			});
 
 			markers[place._id] = marker;
