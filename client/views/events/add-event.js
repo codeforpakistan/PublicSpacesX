@@ -163,7 +163,7 @@ Template.addForm.events({
 function moveToLocation(map, marker){
 	map.setCenter(marker.getPosition());
 	getPosition(marker);
-	resetMarkers(marker);
+//	resetMarkers(marker);
 	$("#selectPlace").val(marker.place_id); //set option to current marker or unselect it if not in the list
 	if (marker.title) {
 		infoWindow.setContent(marker.title);
@@ -230,7 +230,7 @@ function bindDragEvents(marker) {
 	});
 	google.maps.event.addListener(marker, 'dragstart', function () {
 		stopBounce(this);
-		resetMarkers(marker)
+//		resetMarkers(marker)
 	});
 }
 
