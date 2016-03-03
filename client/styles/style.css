@@ -6,7 +6,14 @@
 @font-face { 
 	font-family: proximanova; 
 	src: url("/fonts/proximanova-semibold-webfont.woff"); 
-} 
+}
+
+body {
+	background-color: #DDDDDD;
+}
+a, a:hover{
+  color: #000;
+}
 
 .navbar {
    background-color: transparent;
@@ -15,19 +22,16 @@
 }
 .navbar li { color: #000 } 
 .navbar-toggle {
-	padding: 24px 25px;
+	padding: 16px 17px;
 	background-image: url("/img/toggle.png");
+	background-size: 30px Auto;
 	background-repeat: no-repeat;
     background-position: center; 
 }
-.navbar-default {
-	background-color: rgba(100,100,100,0.5);
-}
-
 .navbar-default .navbar-nav li a:hover {
 	color: #2C2C2C;
 }
-.navbar-default .navbar-nav li a, a:focus, a:hover {
+.navbar-default .navbar-nav li a {
 	font-family: proximanova;
 	font-size: 20px;
 	font-weight: 600;

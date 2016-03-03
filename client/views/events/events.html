@@ -5,5 +5,15 @@
   <div class="map-container" id="upcoming-maps">
     {{> googleMap name="ongoing-events" options=MapOptions}}
   </div>
+  
+  {{#if currentUser}}
+  <div class="row" style="margin: 20px;">
+	  <div class="form-group">
+	    <div class="col-lg-10 col-lg-offset-2">
+	      <button type="submit" class="btn btn-primary">Criar Evento</button>
+	    </div>
+	  </div>
+  </div>
+  {{/if}}
 </div>
 </template>
