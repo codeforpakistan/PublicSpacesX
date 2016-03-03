@@ -13,7 +13,7 @@ body {
 }
 
 body.page-events {
-    background: url(img/home_2.jpg) no-repeat 100% center;
+    background: url(img/home_2.jpg) 100% top;
 }
 
 body.page-places {
