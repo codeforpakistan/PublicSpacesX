@@ -11,7 +11,7 @@ gPlaceTypesByCategory = {
 		"Praças",
 		"Parques",
 		"Zoológico",
-		"Parque",
+//		"Parque",
 	],
 	"Bibliotecas e Casas de leitura": [
 		"Gibitecas",

@@ -160,7 +160,7 @@ ul.rig.columns-4 li {
 }
 
 .contact input[type=submit] { color: black; }
-.contact label span { display:none; }
+.contact .sendgrid-subscription-widget label>span { display:none; }
 .contact form { padding-top: 30px; padding-bottom: 30px; }
 
 /* HOME */

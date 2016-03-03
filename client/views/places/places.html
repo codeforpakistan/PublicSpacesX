@@ -2,7 +2,7 @@
   <div class="container-fluid" style="padding-top: 75px;">
       <div class="row">
           
-          <div class="col-sm-5 sidebar">
+          <div class="col-sm-6 col-md-5 sidebar">
               <h1>Todos os lugares públicos perto de você!</h1>
             
               <div id="place-filters" class="filter">
@@ -19,8 +19,9 @@
               </div>
           </div>
 
-          <div class="col-sm-7">
+          <div class="col-sm-6 col-md-7">
               <div class="map-container" id="upcoming-maps">
+                  <div id="export"><img src="img/json.png"/></div>
                 {{> googleMap name="places" options=MapOptions}}
               </div>
           </div>

@@ -1,17 +1,31 @@
 var subscribe = null;
 
+function filteredPlaces () {
+	   var list = [];
+	   $('input.filter').each(function(){
+	   	if (this.checked) list.push(this.value);
+	   });
+	   if (list.length) {
+		   return Places.find({ 
+			"DS_SUBTIPO_EQUIPAMENTO" : { $in: list }, 
+			"DS_DEP_ADMINISTRATIVA" : { $ne: "Particular" } 
+			});
+	   } else {
+		   return Places.find(gFilterAllPlaces);
+	   }
+}
+
 Template.places.events({
-  'change input.filter': function (e, template) {
-   var list = [];
-   $('input.filter').each(function(){
-   	if (this.checked) list.push(this.value);
-   });
-   drawMarkers(mymap,Places.find({ 
-	"DS_SUBTIPO_EQUIPAMENTO" : { $in: list }, 
-	"DS_DEP_ADMINISTRATIVA" : { $ne: "Particular" } 
-	}));
-    
-  }
+  	'change input.filter': function (e, template) {  		
+	    drawMarkers(mymap,filteredPlaces());
+  	},
+	'click .login-btn': function(e){
+	    e.stopPropagation();
+	    Template._loginButtons.toggleDropdown();
+	},
+	"click #export": function() {
+		MyAppExporter.exportJson(filteredPlaces().fetch());
+	}
 });
 
 Template.places.helpers({
@@ -30,10 +44,9 @@ Template.places.helpers({
           image = gPlaceIcons[gCategoryByPlaceTypes[type]];
         }
       }
-      console.log(image);
 
   	return '<img src="icons/' + image + '" title="' + type + '" class="icon"/>';
-  }
+  },
   
 });
 
@@ -43,7 +56,7 @@ Template.places.created = function() {
   subscribe = Meteor.subscribe("places");
 
   GoogleMaps.ready('places', function(map) {
-	drawMarkers(map,Places.find(gFilterAllPlaces));
+	drawMarkers(map,filteredPlaces());
 	mymap = map;
   });
 
@@ -66,6 +79,18 @@ function drawMarkers(map,places) {
 
       if (doc.TELEFONE_EQUI) {
         content = content + "<p><b>Fone:</b> " + doc.TELEFONE_EQUI + "</p>"
+      }
+      if (doc.EMAIL_EQUI) {
+        content = content + "<p><b>Email:</b> " + doc.EMAIL_EQUI + "</p>"
+      }
+      if (doc.SITE_EQUI) {
+        content = content + "<p><b>Website:</b> " + doc.SITE_EQUI + "</p>"
+      }
+      
+      if (Meteor.userId) {
+	      content = content + '<a href="/events/add" class="btn btn-block btn-default btn-eu-vou">Novo encontro</a>';
+      } else {
+	      content = content + '<a href="" class="btn btn-block btn-default btn-eu-vou login-btn">Novo encontro</a>';
       }
 
       lat = parseInt(doc.LAT_SIRGAS.replace(/\s/g, '').substr(0, 9), 10) / 1000000;
