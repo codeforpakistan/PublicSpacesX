@@ -8,6 +8,10 @@
 	src: url("/fonts/proximanova-semibold-webfont.woff"); 
 } 
 
+a, a:hover{
+  color: #000;
+}
+
 .navbar {
    background-color: transparent;
    background: transparent;
@@ -27,7 +31,7 @@
 .navbar-default .navbar-nav li a:hover {
 	color: #2C2C2C;
 }
-.navbar-default .navbar-nav li a, a:focus, a:hover {
+.navbar-default .navbar-nav li a {
 	font-family: proximanova;
 	font-size: 20px;
 	font-weight: 600;
