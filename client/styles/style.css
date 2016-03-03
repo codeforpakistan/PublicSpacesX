@@ -9,9 +9,18 @@
 }
 
 body {
-	background-color: #DDDDDD;
+    background-color: #ffffff;
 }
-a, a:hover{
+
+body.page-events {
+    background: url(img/home_2.jpg) no-repeat 100% center;
+}
+
+body.page-places {
+    background: url(img/home_1.jpg) no-repeat 100% center;
+}
+
+a, a:hover, a:focus{
   color: #000;
 }
 
@@ -19,6 +28,20 @@ a, a:hover{
    background-color: transparent;
    background: transparent;
    border-color: transparent;
+}
+.navbar.solid {
+   background-color:#3EBCE0;
+}
+.navbar.solid, .page-places .navbar, .page-places .navbar.solid, .page-events .navbar, .page-events .navbar.solid {
+   	-webkit-box-shadow: 0px 11px 35px -14px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 11px 35px -14px rgba(0,0,0,0.75);
+	box-shadow: 0px 11px 35px -14px rgba(0,0,0,0.75);
+} 
+.page-places .navbar {
+   background-color:#3EBCE0;
+}
+.page-events .navbar, .page-events .navbar.solid {
+   background-color:#efb821;
 }
 .navbar li { color: #000 } 
 .navbar-toggle {
@@ -41,16 +64,27 @@ a, a:hover{
 	color: #2C2C2C;
 }
 .navbar-brand {
-	padding: 5% 5%;
+	padding: 10px;
 }
 
-.form-control {
-  width: 800px;
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+    background-color: #FFF;
+    color: #2C2C2C;
 }
-form {
-  padding-left: 80px;
-  padding-top: 50px;
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: black;
+    background-color: transparent;
 }
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent;
+}
+
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+	background-color: #ddd;	
+}
+
 h1 {
   text-align: center;
 }
@@ -126,6 +160,17 @@ ul.rig.columns-4 li {
   width: 22.5%;
   /* this value + 2.5 should = 25% */
 }
+
+.contact input[type=submit] { color: black; }
+.contact label span { display:none; }
+.contact form { padding-top: 30px; padding-bottom: 30px; }
+
+.home-section-float {
+	-webkit-box-shadow: 0px 10px 52px -2px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 10px 52px -2px rgba(0,0,0,0.75);
+	box-shadow: 0px 10px 52px -2px rgba(0,0,0,0.75);
+}
+
 @media (max-width: 480px) {
   ul.grid-nav li {
     display: block;
@@ -143,3 +188,8 @@ ul.rig.columns-4 li {
     margin: 0 0 20px;
   }
 }
+
+@media (max-width: 768px) {
+ .contact form { padding-top: 0; padding-bottom: 0; }
+}
+

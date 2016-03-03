@@ -18,17 +18,8 @@
 
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="/places">Espaços públicos</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Encontros<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="/events/now">Proximos encontros</a></li>
-            {{#if currentUser}}
-            <li><a href="/events/add">Criar um encontro</a></li>
-            {{/if}}
-            <li><a href="/events/old">Encontros anteriores</a></li>
-          </ul>
-        </li>
+        <li><a href="/places">Buscar um espaço</a></li>
+        <li><a href="/events/now">Buscar um encontro</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}
