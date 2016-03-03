@@ -1,5 +1,19 @@
 var subscribe = null;
 
+Template.places.events({
+  'change input.filter': function (e, template) {
+   var list = [];
+   $('input.filter').each(function(){
+   	if (this.checked) list.push(this.value);
+   });
+   drawMarkers(mymap,Places.find({ 
+	"DS_SUBTIPO_EQUIPAMENTO" : { $in: list }, 
+	"DS_DEP_ADMINISTRATIVA" : { $ne: "Particular" } 
+	}));
+    
+  }
+});
+
 Template.places.helpers({
   placeCategories: function() {
     return gPlaceTypesByCategory;
@@ -7,15 +21,31 @@ Template.places.helpers({
   placeTypes: function(category) {
     return gPlaceTypes;
   },
+  
 });
+
+var mymap;
 
 Template.places.created = function() {
   subscribe = Meteor.subscribe("places");
 
   GoogleMaps.ready('places', function(map) {
+	drawMarkers(map,Places.find(gFilterAllPlaces));
+	mymap = map;
+  });
+
+}
+
+var markers = [];
+
+function drawMarkers(map,places) {
     var infowindow = new google.maps.InfoWindow();
 
-    Places.find(gFilterAllPlaces).forEach(function(doc) {
+	while(markers.length){
+    	markers.pop().setMap(null);
+    }
+        
+    places.forEach(function(doc) {
       var content =
         "<h4>" + doc.NM_ABREV_EQUI + "</h4>" +
         "<p><strong>" + doc.DS_TEMA + "</strong><p>" +
@@ -46,6 +76,8 @@ Template.places.created = function() {
         title: content,
         icon: image,
       });
+      
+      markers[markers.length] = marker;
 
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(this.title);
@@ -53,5 +85,5 @@ Template.places.created = function() {
       });
 
     });
-  });
+	
 }
