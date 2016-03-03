@@ -18,9 +18,22 @@ Template.places.helpers({
   placeCategories: function() {
     return gPlaceTypesByCategory;
   },
-  placeTypes: function(category) {
+  placeTypes: function() {
     return gPlaceTypes;
   },
+  placeIcon: function(type) {
+      image = 'place_default.png';
+      if (gPlaceIcons[type]) {
+        image = gPlaceIcons[type];
+      } else {
+        if (gPlaceIcons[gCategoryByPlaceTypes[type]]) {
+          image = gPlaceIcons[gCategoryByPlaceTypes[type]];
+        }
+      }
+      console.log(image);
+
+  	return '<img src="icons/' + image + '" title="' + type + '" class="icon"/>';
+  }
   
 });
 

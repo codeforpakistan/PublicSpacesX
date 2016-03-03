@@ -48,6 +48,8 @@ gPlaceTypesByCategory = {
 	]
 };
 
+gPlaceCategories = Object.keys(gPlaceTypesByCategory);
+
 gPlaceTypes = _.flatten(gPlaceTypesByCategory);
 
 gCategoryByPlaceTypes = {};
