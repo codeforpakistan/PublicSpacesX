@@ -1,11 +1,12 @@
 /* CSS declarations go here */
-:root{
+
+:root {
     --menu-font-color: #2C2C2C;
 }
 
-@font-face { 
-	font-family: proximanova; 
-	src: url("/fonts/proximanova-semibold-webfont.woff"); 
+@font-face {
+    font-family: proximanova;
+    src: url("/fonts/proximanova-semibold-webfont.woff");
 }
 
 body {
@@ -20,154 +21,210 @@ body.page-places {
     background: url(img/home_1.jpg) no-repeat 100% top;
 }
 
-a, a:hover, a:focus{
-  color: #000;
+a,
+a:hover,
+a:focus {
+    color: #000;
 }
 
 .navbar {
-   background-color: transparent;
-   background: transparent;
-   border-color: transparent;
-}
-.navbar.solid {
-   background-color:#3EBCE0;
-}
-.navbar.solid, .page-places .navbar, .page-places .navbar.solid, .page-events .navbar, .page-events .navbar.solid {
-   	-webkit-box-shadow: 0px 11px 35px -14px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 11px 35px -14px rgba(0,0,0,0.75);
-	box-shadow: 0px 11px 35px -14px rgba(0,0,0,0.75);
-} 
-.page-places .navbar, .page-places .sidebar {
-   background-color: rgba(62,188,224,.85);
-}
-.page-events .navbar, .page-events .navbar.solid, .page-events .sidebar {
-   background-color: rgba(239,184,33,.85);
-}
-.navbar li { color: #000 } 
-.navbar-toggle {
-	padding: 16px 17px;
-	background-image: url("/img/toggle.png");
-	background-size: 30px Auto;
-	background-repeat: no-repeat;
-    background-position: center; 
-}
-.navbar-default .navbar-nav li a:hover {
-	color: #2C2C2C;
-}
-.navbar-default .navbar-nav li a {
-	font-family: proximanova;
-	font-size: 20px;
-	font-weight: 600;
-	color: #2C2C2C;
-}
-.navbar-default .navbar-nav .open a, a:focus {
-	color: #2C2C2C;
-}
-.navbar-brand {
-	padding: 10px;
+    background-color: transparent;
+    background: transparent;
+    border-color: transparent;
 }
 
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+.navbar.solid {
+    background-color: #3EBCE0;
+}
+
+.navbar.solid,
+.page-places .navbar,
+.page-places .navbar.solid,
+.page-events .navbar,
+.page-events .navbar.solid {
+    -webkit-box-shadow: 0px 11px 35px -14px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 11px 35px -14px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 11px 35px -14px rgba(0, 0, 0, 0.75);
+}
+
+.page-places .navbar,
+.page-places .sidebar {
+    background-color: rgba(62, 188, 224, .85);
+}
+
+.page-events .navbar,
+.page-events .navbar.solid,
+.page-events .sidebar {
+    background-color: rgba(239, 184, 33, .85);
+}
+
+.navbar li {
+    color: #000
+}
+
+.navbar-toggle {
+    padding: 16px 17px;
+    background-image: url("/img/toggle.png");
+    background-size: 30px Auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.navbar-default .navbar-nav li a:hover {
+    color: #2C2C2C;
+}
+
+.navbar-default .navbar-nav li a {
+    font-family: proximanova;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2C2C2C;
+}
+
+.navbar-default .navbar-nav .open a,
+a:focus {
+    color: #2C2C2C;
+}
+
+.navbar-brand {
+    padding: 10px;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
     background-color: #FFF;
     color: #2C2C2C;
 }
 
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
     color: black;
     background-color: transparent;
 }
 
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
     background-color: transparent;
 }
 
-.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
-	background-color: #ddd;	
+.dropdown-menu>li>a:hover,
+.dropdown-menu>li>a:focus {
+    background-color: #ddd;
 }
 
 h1 {
-  text-align: center;
+    text-align: center;
 }
+
+h1,
+h2,
+h3 {
+    font-family: proximanova;
+}
+
 .map-container {
-  margin: auto;
-  width: 100%;
-  height: 500px;
+    margin: auto;
+    width: 100%;
+    height: 500px;
 }
+
 #upcoming-maps {
-  width: 100%;
-  height: 500px;
+    width: 100%;
+    height: 500px;
 }
+
 #spacing {
-  padding-top: 80px;
+    padding-top: 80px;
 }
+
 #details {
-  padding-left: 200px;
-  padding-right: 200px;
+    padding-left: 200px;
+    padding-right: 200px;
 }
+
 ul.rig {
-  list-style: none;
-  font-size: 0px;
-  margin-left: -2.5%;
-  /* should match li left margin */
+    list-style: none;
+    font-size: 0px;
+    margin-left: -2.5%;
+    /* should match li left margin */
 }
+
 ul.rig li {
-  display: inline-block;
-  padding: 10px;
-  margin: 0 0 2.5% 2.5%;
-  background: #fff;
-  border: 1px solid #ddd;
-  font-size: 16px;
-  font-size: 1rem;
-  vertical-align: top;
-  box-shadow: 0 0 5px #ddd;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+    display: inline-block;
+    padding: 10px;
+    margin: 0 0 2.5% 2.5%;
+    background: #fff;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    font-size: 1rem;
+    vertical-align: top;
+    box-shadow: 0 0 5px #ddd;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
+
 ul.rig li img {
-  max-width: 100%;
-  height: auto;
-  margin: 0 0 10px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 0 10px;
 }
+
 ul.rig li h3 {
-  margin: 0 0 5px;
+    margin: 0 0 5px;
 }
+
 ul.rig li p {
-  font-size: .9em;
-  line-height: 1.5em;
-  color: #999;
+    font-size: .9em;
+    line-height: 1.5em;
+    color: #999;
 }
+
 
 /* class for 2 columns */
 
 ul.rig.columns-2 li {
-  width: 47.5%;
-  /* this value + 2.5 should = 50% */
+    width: 47.5%;
+    /* this value + 2.5 should = 50% */
 }
+
 
 /* class for 3 columns */
 
 ul.rig.columns-3 li {
-  width: 30.83%;
-  /* this value + 2.5 should = 33% */
+    width: 30.83%;
+    /* this value + 2.5 should = 33% */
 }
+
 
 /* class for 4 columns */
 
 ul.rig.columns-4 li {
-  width: 22.5%;
-  /* this value + 2.5 should = 25% */
+    width: 22.5%;
+    /* this value + 2.5 should = 25% */
 }
 
-.contact input[type=submit] { color: black; }
-.contact .sendgrid-subscription-widget label>span { display:none; }
-.contact form { padding-top: 30px; padding-bottom: 30px; }
+.contact input[type=submit] {
+    color: black;
+}
+
+.contact .sendgrid-subscription-widget label>span {
+    display: none;
+}
+
+.contact form {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
 
 /* HOME */
+
 .home-section-float {
-	-webkit-box-shadow: 0px 10px 52px -2px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 10px 52px -2px rgba(0,0,0,0.75);
-	box-shadow: 0px 10px 52px -2px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 10px 52px -2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 10px 52px -2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 10px 52px -2px rgba(0, 0, 0, 0.75);
 }
 
 .home-section {
@@ -194,8 +251,9 @@ ul.rig.columns-4 li {
         margin-top: -40px;
         margin-bottom: -70px;
     }
-	.sidebar { min-height: 500px; }
-
+    .sidebar {
+        min-height: 500px;
+    }
 }
 
 @media (min-width: 1150px) {
@@ -215,34 +273,39 @@ ul.rig.columns-4 li {
     text-align: left;
 }
 
+
 /* End home */
 
 .filter .icon {
-	width: 16px;
+    width: 16px;
     margin: 0 5px;
 }
 
-.filter ul { display:inline-block; }
+.filter ul {
+    display: inline-block;
+}
 
 @media (max-width: 480px) {
-  ul.grid-nav li {
-    display: block;
-    margin: 0 0 5px;
-  }
-  ul.grid-nav li a {
-    display: block;
-  }
-  ul.rig {
-    margin-left: 0;
-  }
-  ul.rig li {
-    width: 100% !important;
-    /* over-ride all li styles */
-    margin: 0 0 20px;
-  }
+    ul.grid-nav li {
+        display: block;
+        margin: 0 0 5px;
+    }
+    ul.grid-nav li a {
+        display: block;
+    }
+    ul.rig {
+        margin-left: 0;
+    }
+    ul.rig li {
+        width: 100% !important;
+        /* over-ride all li styles */
+        margin: 0 0 20px;
+    }
 }
 
 @media (max-width: 768px) {
- .contact form { padding-top: 0; padding-bottom: 0; }
+    .contact form {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
 }
-
