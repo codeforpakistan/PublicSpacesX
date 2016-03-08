@@ -33,9 +33,10 @@ Router.route("/events/now/:event_id?", {
 		  $("meta[property='og:title']").attr("content", event.name);
 		  if (event.description)
 			  $("meta[property='og:description']").attr("content", event.description);
-		  if (Iron.Location.get() && Iron.Location.get().href)
+		  if (Iron.Location.get() && Iron.Location.get().href) {
 			  $("meta[property='og:url']").attr("content", Iron.Location.get().href);
-//		  $("meta[property='og:image']").attr("content", );
+			  $("meta[property='og:image']").attr("content", Iron.Location.get().rootUrl+"/img/logo.png");
+		  }
 	  }
 	  this.render();
   },

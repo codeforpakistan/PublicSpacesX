@@ -30,8 +30,10 @@ Template.events.created = function() {
 
       if (Meteor.userId() && doc.owner == Meteor.userId()) {
     	  content += '<button class="btn btn-block btn-default btn-edit" data-id="' + doc._id + '">Editar</button>';
-
       }
+      
+      content += '<button class="btn btn-block btn-default btn-share" data-id="' + doc._id + '">Compartilhe</button>';
+      
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(doc.lat, doc.lng),
         map: map.instance,
@@ -80,5 +82,9 @@ Template.events.events({
     if (userId) {
     	Router.go('/events/' + event_id);
     }
+  },
+  
+  "click .btn-share": function(event, template){
+	  	window.open("https://www.facebook.com/dialog/share?app_id=1697753030496457&display=popup&href="+ encodeURIComponent(window.location) +"&redirect_uri=" + encodeURIComponent(window.location));
   }
 });
