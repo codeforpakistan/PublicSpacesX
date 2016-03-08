@@ -28,6 +28,10 @@ Template.events.created = function() {
       // Eu vou
       content += '<button class="btn btn-block btn-default btn-eu-vou" data-id="' + doc._id + '">Eu vou!</button>';
 
+      if (Meteor.userId() && doc.owner == Meteor.userId()) {
+    	  content += '<button class="btn btn-block btn-default btn-edit" data-id="' + doc._id + '">Editar</button>';
+
+      }
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(doc.lat, doc.lng),
         map: map.instance,
@@ -67,6 +71,14 @@ Template.events.events({
 
       });
     }
+  },
 
+  "click .btn-edit": function(event, template){
+    var event_id = template.$(event.target).attr('data-id');
+
+    var userId = Meteor.userId();
+    if (userId) {
+    	Router.go('/events/' + event_id);
+    }
   }
 });
