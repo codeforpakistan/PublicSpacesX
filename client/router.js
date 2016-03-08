@@ -6,7 +6,7 @@ Router.route("/", {
   }
 });
 
-Router.route("/events/now", {
+Router.route("/events/now/:event_id?", {
   name: "events",
   template: "events",
   waitOn : function(){
@@ -70,6 +70,33 @@ Router.route("/events/old", {
     $('body').removeClass('page-events');
   }
 });
+
+Router.route("/events/:event_id?", {
+	  name: "editEvents",
+	  template: "addEvents",
+	  waitOn : function(){
+		    Meteor.subscribe("categorias");
+		    Meteor.subscribe("events");
+	  },
+	  data: {
+	    MapOptions: function() {
+	      Location.getLocation(); // Look at /client/lib/Location.js
+	      if (GoogleMaps.loaded()) {
+	        return {
+	          center: new google.maps.LatLng(gLati, gLongi),
+	          zoom: gZoom
+	        }
+	      }
+	    }
+	  },
+	  onBeforeAction: function() {
+	    $('body').addClass('page-events');
+	    this.next();
+	  },
+	  onStop: function() {
+	    $('body').removeClass('page-events');
+	  }, 
+	});
 
 Router.route("/places", {
   name: "places",

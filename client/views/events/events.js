@@ -43,8 +43,8 @@ Template.events.created = function() {
 
     });
    
-    if (Router.current().params.query.event_id && markers) {
-    	marker = markers[Router.current().params.query.event_id];
+    if (Router.current().params.event_id && markers) {
+    	marker = markers[Router.current().params.event_id];
     	map.instance.setCenter(marker.getPosition());
     	google.maps.event.trigger(marker, 'click');
     }

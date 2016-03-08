@@ -6,9 +6,8 @@ var currentMarker = null;
 var infoWindow = null;
 
 
-
 Template.addForm.created = function() {
-
+	
 	subscribe = Meteor.subscribe("places", { NM_ABREV_EQUI : { $exists : true, $ne : '' } });
 
 	// We can use the `ready` callback to interact with the map API once the map is ready.
@@ -88,6 +87,10 @@ Template.addForm.created = function() {
 	});
 };
 
+Template.registerHelper('selectedIf', function(val,place) {
+	  return val == place ? 'selected' : '';
+});
+
 Template.addForm.helpers({
 	categorias: function(){
 		var ret = [];
@@ -107,8 +110,25 @@ Template.addForm.helpers({
 				value : place._id
 			};
 		}).sort(function(a,b) { a.label.localeCompare(b.label); });
-
 	}
+	,
+	saved_event : function(){
+		if (Router.current().params.event_id) {
+			var event_id = Router.current().params.event_id;
+			console.log("Editing event_id[" + event_id + "]");
+			saved_event = Events.findOne({_id: event_id});
+			if (saved_event) {
+				console.log(saved_event);
+				if (saved_event.owner !== Meteor.userId()) {
+					throw new Meteor.Error("not-authorized");
+				}
+				saved_event.isPlace = function(place) {
+					return this.place && this.place == place;
+				}
+				return saved_event;
+			}
+		}
+	},
 });
 
 Template.addForm.events({
@@ -138,7 +158,7 @@ Template.addForm.events({
 			lng: Session.get("lng")
 		});
 		
-		Router.go('/events/now?event_id=' + event_id);
+		Router.go('/events/now/' + event_id);
 
 		e.target.eventName.value = "";
 		e.target.eventCategory.value = "";
