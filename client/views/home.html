@@ -1,0 +1,98 @@
+<template name="home">
+    <div class="container-fluid">
+        <div class="home-section text-center row" style="background-image: url('/img/home_1.jpg')">
+            <div class="col-xs-12">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+                    <img class="img-responsive" src="/img/logo.png">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="col-md-4 col-md-offset-4">
+                    <h2>Ocupando os espaços públicos, <b>JUNTOS!</b></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="home-section-float col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" id="section-como-funciona">
+                <div class="col-sm-8 text-center" style="padding: 15px">
+                    <h3><b>Como funciona o projeto?</b></h3>
+                    <p style="color: #fff">No Criatividades acreditamos que quando os espaços públicos são bem utilizados eles tornam a cidade mais segura, divertida e bem cuidada! Aqui você vai poder visualizar todos os espaços disponíveis de Curitiba em um mapa interativo. Clique, crie encontros e saiba o que está rolando pela cidade!</p>
+                </div>
+                <div class="col-sm-4" style="padding: 15px">
+                    <img class="img-responsive center-block" src="/img/interrogacao.png">
+                </div>
+            </div>
+        </div>
+        <div class="home-section text-center row" style="background-image: url('/img/home_2.jpg')">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-4">
+                    <h3 class="logo-font" style="color: black"><b>BUSQUE E CRIE ENCONTROS</b></h3>
+                    <h4><a href="/events/now">Veja tudo que está rolando pela cidade</a> em um mapa interativo. Além disso, você mesmo pode <a href="/events/add">criar novos encontros</a> e manter a cidade ativa.</h4  >
+                </div>
+                <div class="col-md-4">
+                    <h3 class="logo-font" style="color: black"><b>DESCUBRA OS ESPAÇOS PÚBLICOS</b></h3>
+                    <h4><a href="/places">Conheça o que a cidade disponibiliza para você!</a> Existem mais lugares por aí do que você imagina.</h4>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="logo-font" style="color: black"><b>PROPONHA MELHORIAS</b></h3>
+                    <p>Tem alguma idéia legal para que o espaço fique ainda melhor? Proponha projetos para a comunidade ou para a prefeitura!</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="home-section-float col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" id="section-quem-somos-nos">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3>Quem somos nós</h3>
+                    </div>
+                    <div class="col-md-8">
+                        <a href="http://openbrazil.org/curitiba/" target="0"><img class="img-responsive" style="margin: 0px 0px 0px 0px;" src="/img/codeforcuritiba.png" href="http://openbrazil.org/curitiba/"></a>
+                    </div>
+                    <div class="col-md-4">
+                        <h3></h3>
+                        <h4>O Criatividades foi criado pelo Code for Curitiba, um grupo de hackers cívicos que trabalham para melhorar a nossa cidade. <a href="http://openbrazil.org/curitiba/" target="0">Faça parte você também!</a></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="home-section text-center row" style="background-image: url('/img/home_3.jpg')">
+            <div style="background-color: #CC62A4" class="col-md-8 col-md-offset-2">
+                <div class="row">
+                    <div class="col-sm-6 hidden-xs">
+                        <img class="img-responsive" src="/img/email-01.png" />
+                    </div>
+                    <div class="col-sm-6" style="padding: 15px">
+                        <h2 style="color: #000">FIQUE SABENDO DAS NOVIVADES!</h2>
+                        <div class="contact">
+                            <div class="sendgrid-subscription-widget" data-submit-text="Assinar" data-message-success="Obrigado por assinar." data-message-invalid="O e-mail informado é inválido. Por favor tente novanente." data-message-unprocessed="Infelizmente um erro ocorreu, tente novamente." data-token="JQXs2I22yZhrUcxo2rI9LrLA9yuMcJpxOBohcjOSrBggGT4SfNSL02wASnyVbPlZ"></div>
+                            <script>
+                            ! function(d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0],
+                                    p = /^http:/.test(d.location) ? "http" : "https";
+                                if (!d.getElementById(id)) {
+                                    js = d.createElement(s);
+                                    js.id = id;
+                                    js.src = p + "://s3.amazonaws.com/subscription-cdn/0.2/widget.min.js";
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }
+                            }(document, "script", "sendgrid-subscription-widget-js");
+                            </script>
+                        </div>
+                        <!--form class="contact">
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Nome e Sobrenome">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="5"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Enviar</button>
+                        </form-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

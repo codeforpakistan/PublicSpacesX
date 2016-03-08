@@ -1,0 +1,19 @@
+<template name="events">
+<div style="padding-top: 75px;">
+  <h1>Todos os eventos perto de você!</h1>
+
+  <div class="map-container" id="upcoming-maps">
+    {{> googleMap name="ongoing-events" options=MapOptions}}
+  </div>
+  
+  {{#if currentUser}}
+  <div class="row" style="margin: 20px;">
+	  <div class="form-group">
+	    <div class="col-lg-10 col-lg-offset-2">
+	      <a href="/events/add" class="btn btn-primary">Criar Evento</a>
+	    </div>
+	  </div>
+  </div>
+  {{/if}}
+</div>
+</template>

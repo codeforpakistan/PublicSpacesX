@@ -1,0 +1,39 @@
+<head>
+  <title>Criatividades - Encontros nos espaços públicos</title>
+  	<!-- Open Graph Meta Tags -->
+  	<meta property="fb:app_id" content="1697753030496457" /> 
+  	<meta property="og:site_name" content="Criatividades"/>
+	<meta property="og:type" content="website"/>
+	<meta property="og:title" content=""/>
+	<meta property="og:description" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:image" content=""/> 
+</head>
+
+<body>
+  {{>navBar}}
+</body>
+
+<template name="navBar">
+
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-new">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
+      <a class="navbar-brand" href="/"><img src="/img/logohorizontal.png"/></a>
+    </div>
+
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/places">Buscar um espaço</a></li>
+        <li><a href="/events/now">Buscar um encontro</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {{> loginButtons}}
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  </nav>
+</template>
