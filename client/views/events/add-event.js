@@ -133,6 +133,7 @@ Template.addForm.helpers({
 
 Template.addForm.events({
 	'submit form': function(e) {
+		
 		e.preventDefault();
 
 		var name = e.target.eventName.value;
@@ -143,20 +144,43 @@ Template.addForm.events({
 		var description = e.target.description.value;
 		var requirements = e.target.requirements.value;
 
-		event_id = Events.insert({
-			name: name,
-			owner: Meteor.userId(),
-			username: Meteor.user().username,
-			category : category,
-			place : place,
-			date: date,
-			dateCreated: new Date(),
-			time: time,
-			description: description,
-			requirements: requirements,
-			lat: Session.get("lat"),
-			lng: Session.get("lng")
-		});
+		saved_event = getEvent();
+		if (saved_event) {
+			Events.update({
+				_id: saved_event._id},
+				{$set: {
+					name: name,
+					owner: Meteor.userId(),
+					username: Meteor.user().username,
+					category : category,
+					place : place,
+					date: date,
+					dateCreated: new Date(),
+					time: time,
+					description: description,
+					requirements: requirements,
+					lat: Session.get("lat"),
+					lng: Session.get("lng")
+				}
+			});
+			event_id = saved_event._id;
+		}
+		else {
+			event_id = Events.insert({
+				name: name,
+				owner: Meteor.userId(),
+				username: Meteor.user().username,
+				category : category,
+				place : place,
+				date: date,
+				dateCreated: new Date(),
+				time: time,
+				description: description,
+				requirements: requirements,
+				lat: Session.get("lat"),
+				lng: Session.get("lng")
+			});
+		}
 		
 		Router.go('/events/now/' + event_id);
 
@@ -179,6 +203,22 @@ Template.addForm.events({
 		}
 	}
 });
+
+
+function getEvent() {
+	if (Router.current().params.event_id) {
+		var event_id = Router.current().params.event_id;
+		console.log("Editing event_id[" + event_id + "]");
+		saved_event = Events.findOne({_id: event_id});
+		if (saved_event) {
+			console.log(saved_event);
+			if (saved_event.owner !== Meteor.userId()) {
+				throw new Meteor.Error("not-authorized");
+			}
+			return saved_event;
+		}
+	}
+}
 
 function moveToLocation(map, marker){
 	map.setCenter(marker.getPosition());
