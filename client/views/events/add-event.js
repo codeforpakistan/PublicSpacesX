@@ -4,12 +4,12 @@ var globalMap = null;
 var markers = {};
 var currentMarker = null;
 var infoWindow = null;
-
+var saved_event = null;
+var event_Id = null;
 
 Template.addForm.created = function() {
-	
+	event_Id = getEventId();
 	subscribe = Meteor.subscribe("places", { NM_ABREV_EQUI : { $exists : true, $ne : '' } });
-
 	// We can use the `ready` callback to interact with the map API once the map is ready.
 	GoogleMaps.ready('events', function(map) {
 		var MARKER_DEFAULT = {
@@ -113,20 +113,15 @@ Template.addForm.helpers({
 	}
 	,
 	saved_event : function(){
-		if (Router.current().params.event_id) {
-			var event_id = Router.current().params.event_id;
-			console.log("Editing event_id[" + event_id + "]");
-			saved_event = Events.findOne({_id: event_id});
-			if (saved_event) {
-				console.log(saved_event);
-				if (saved_event.owner !== Meteor.userId()) {
-					throw new Meteor.Error("not-authorized");
-				}
-				saved_event.isPlace = function(place) {
-					return this.place && this.place == place;
-				}
-				return saved_event;
+		//I'm not sure this is the right place to load the collection data, but it works
+		if (event_Id && !saved_event) {
+			saved_event = getEvent();
+		}
+		if (event_Id && saved_event) {
+			if (saved_event.owner !== Meteor.userId()) {
+				throw new Meteor.Error("not-authorized");
 			}
+			return saved_event;
 		}
 	},
 });
@@ -164,6 +159,8 @@ Template.addForm.events({
 				}
 			});
 			event_id = saved_event._id;
+			//Reloading the page is creating problems so I had to reset the global variable
+			saved_event = null;
 		}
 		else {
 			event_id = Events.insert({
@@ -204,10 +201,14 @@ Template.addForm.events({
 	}
 });
 
-
-function getEvent() {
+function getEventId() {
 	if (Router.current().params.event_id) {
-		var event_id = Router.current().params.event_id;
+		return Router.current().params.event_id;
+	}
+}
+function getEvent() {
+	var event_id = getEventId();
+	if (event_id) {
 		console.log("Editing event_id[" + event_id + "]");
 		saved_event = Events.findOne({_id: event_id});
 		if (saved_event) {
