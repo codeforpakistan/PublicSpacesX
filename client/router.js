@@ -96,7 +96,6 @@ Router.route("/events/:event_id?", {
 	      Location.getLocation(); // Look at /client/lib/Location.js
 	      if (GoogleMaps.loaded()) {
 	        return {
-	          center: new google.maps.LatLng(gLati, gLongi),
 	          zoom: gZoom
 	        }
 	      }

@@ -84,6 +84,20 @@ Template.addForm.created = function() {
 				moveToLocation(globalMap, this)
 			});
 		});
+		
+		edit_event = getEvent()
+		if (edit_event) {
+			console.log("Creating marker for event");
+			console.log(edit_event);
+			var marker = new google.maps.Marker({
+				position: new google.maps.LatLng(edit_event.lat, edit_event.lng),
+				draggable: true,
+				animation: google.maps.Animation.DROP,
+				icon: MARKER_DEFAULT,
+				map: map.instance
+			});
+			moveToLocation(globalMap, marker);	
+		}
 	});
 };
 
@@ -222,6 +236,8 @@ function getEvent() {
 }
 
 function moveToLocation(map, marker){
+	console.log("Moving to marker");
+	console.log(marker);
 	map.setCenter(marker.getPosition());
 	getPosition(marker);
 //	resetMarkers(marker);
